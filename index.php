@@ -28,4 +28,5 @@
             $allTime += $item["taskTime"];
         }
         echo ("That will take you $allTime"."h");
+
     }
