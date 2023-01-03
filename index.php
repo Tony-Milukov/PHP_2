@@ -1,31 +1,11 @@
 <?php
-    //Homework 1.1
+    require_once ("classes/Task.php");
+    require_once ("classes/Tasks.php");
+    require_once ("classes/User.php");
+    require_once ("classes/TaskService.php");
+    $tony = new User("tony","okydri@gmail.com");
+    $tasks = new Tasks();
+    $newTask = new Task("to eat",1,$tony);
 
-//    $name = readline("whats your name ");
-//    $age = readline("whats your age ");
-//    echo("your name is $name and $age years old ");
-
-    //Homework 1.2
-    $userName = readline("whats your name? ");
-    $tasks = [];
-    $howManyTasks = readline("How many tasks have you for today? ");
-    if($howManyTasks >= 1) {
-       for($i = 0; $i != $howManyTasks; $i++) {
-           $nameOfTask =  readline("What have you to do? ");
-           $taskTime = readline("How long will it take? ");
-           $newTask = [
-               "nameOfTask" => $nameOfTask,
-               "taskTime" =>  $taskTime
-           ];
-           $tasks[] = $newTask;
-           $newTask = [];
-       }
-        echo ("Your name is $userName \n\n" );
-        echo ("You have " . count($tasks) . " task for today \n\n");
-        $allTime = 0;
-        foreach($tasks as $index => $item) {
-            echo($index+1 . ".  " . $item["nameOfTask"] . "(". $item["taskTime"] . "h)\n");
-            $allTime += $item["taskTime"];
-        }
-        echo ("That will take you $allTime"."h");
-    }
+    TaskService::addComment("very good man",$tony,$newTask);
+    print_r($newTask->getComents());
